@@ -1,10 +1,13 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "electron-quick-start1.1",
+  "version": "1.0.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder",
+    "dist": "electron-builder build",
+    "release": " electron-builder --linux"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -14,9 +17,43 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": {
+    "name": "Barney Rubble",
+    "email": "b@rubble.com",
+    "url": "http://barnyrubble.tumblr.com/"
+  },
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.0.2"
+    "electron": "^4.0.2",
+    "electron-builder": "^20.38.5"
+  },
+  "email": "b@rubble.com",
+  "target": "deb",
+  "icon":"./yelp.svg",
+
+  "build": {
+    "icon":"./yelp.svg",
+    "linux": {
+      "category":"education",
+      "target": [{
+        "target": "deb",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }]
+    },
+    "win": {
+      "target": [{
+        "target": "zip",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }]
+    }
+  },
+  "dependencies": {
+    "nedb": "^1.8.0"
   }
 }

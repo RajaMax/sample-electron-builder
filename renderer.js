@@ -1,3 +1,29 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+var Datastore = require('nedb'),
+    db = new Datastore({
+        filename: 'path/to/datafile',
+        autoload: true
+    });
+var doc = {
+    hello: 'world',
+    n: 5,
+    today: new Date(),
+    nedbIsAwesome: true,
+    notthere: null,
+    notToBeSaved: undefined // Will not be saved
+        ,
+    fruits: ['apple', 'orange', 'pear'],
+    infos: {
+        name: 'nedb'
+    }
+};
+
+db.insert(doc, function (err, newDoc) { // Callback is optional
+    console.log(newDoc)
+});
+db.find({}, function (err, docs) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(docs)
+    }
+});

@@ -1,16 +1,77 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-
+const {
+  app,
+  BrowserWindow, Menu, MenuItem
+} = require('electron')
+const url = require('url')
+const path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+const template = [
+  {
+     label: 'View',
+     submenu: [
+        {
+           role: 'reload'
+        },
+        {
+           role: 'toggledevtools'
+        },
+        {
+           type: 'separator'
+        },
+        {
+           role: 'resetzoom'
+        },
+        {
+           role: 'zoomin'
+        },
+        {
+           role: 'zoomout'
+        },
+        {
+           type: 'separator'
+        },
+        {
+           role: 'togglefullscreen'
+        }
+     ]
+  },
+  
+  {
+     role: 'window',
+     submenu: [
+        {
+           role: 'minimize'
+        },
+        {
+           role: 'close'
+        }
+     ]
+  },
+  
+  {
+     role: 'help',
+     submenu: [
+        {
+           label: 'Learn More'
+        }
+     ]
+  }
+]
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow();
+  mainWindow.maximize()
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadURL(url.format ({
+    pathname: path.join(__dirname, 'dist2','index.html'),
+    protocol: 'file:',
+    slashes: true
+ }))  //mainWindow.loadURL('https://electronjs.org')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -27,6 +88,9 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+
 app.on('ready', createWindow)
 
 // Quit when all windows are closed.
