@@ -7,7 +7,7 @@
     "start": "electron .",
     "pack": "electron-builder",
     "dist": "electron-builder build",
-    "release": " electron-builder --linux"
+    "release": "electron-builder --linux"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [

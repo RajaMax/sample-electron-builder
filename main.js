@@ -8,58 +8,58 @@ const path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-const template = [
-  {
-     label: 'View',
-     submenu: [
-        {
-           role: 'reload'
-        },
-        {
-           role: 'toggledevtools'
-        },
-        {
-           type: 'separator'
-        },
-        {
-           role: 'resetzoom'
-        },
-        {
-           role: 'zoomin'
-        },
-        {
-           role: 'zoomout'
-        },
-        {
-           type: 'separator'
-        },
-        {
-           role: 'togglefullscreen'
-        }
-     ]
-  },
+// const template = [
+//   {
+//      label: 'View',
+//      submenu: [
+//         {
+//            role: 'reload'
+//         },
+//         {
+//            role: 'toggledevtools'
+//         },
+//         {
+//            type: 'separator'
+//         },
+//         {
+//            role: 'resetzoom'
+//         },
+//         {
+//            role: 'zoomin'
+//         },
+//         {
+//            role: 'zoomout'
+//         },
+//         {
+//            type: 'separator'
+//         },
+//         {
+//            role: 'togglefullscreen'
+//         }
+//      ]
+//   },
   
-  {
-     role: 'window',
-     submenu: [
-        {
-           role: 'minimize'
-        },
-        {
-           role: 'close'
-        }
-     ]
-  },
+//   {
+//      role: 'window',
+//      submenu: [
+//         {
+//            role: 'minimize'
+//         },
+//         {
+//            role: 'close'
+//         }
+//      ]
+//   },
   
-  {
-     role: 'help',
-     submenu: [
-        {
-           label: 'Learn More'
-        }
-     ]
-  }
-]
+//   {
+//      role: 'help',
+//      submenu: [
+//         {
+//            label: 'Learn More'
+//         }
+//      ]
+//   }
+// ]
 
 function createWindow() {
   // Create the browser window.
@@ -88,8 +88,8 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+// const menu = Menu.buildFromTemplate(template)
+// Menu.setApplicationMenu(menu)
 
 app.on('ready', createWindow)
 
